@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <div id="inser">
+                <textarea class="texte form-control" rows="4" cols="50" placeholder="Текст"></textarea>
+                <input type="color" id="color">
+                <br>
+            </div>
+        </div>
+
+        <script src="js/FileSaver.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            const font = [
+                "DRPODR__.FON",
+                "LehmannC.otf",
+                "P22 Kilkenny Initial Cap.otf",
+                "P22 Kilkenny Pro.otf",
+                "ZapfinoExtraLT-Alternate.otf",
+                "ZapfinoExtraLT-Four.otf",
+                "ZapfinoExtraLT-Ligatures.otf",
+                "ZapfinoExtraLT-One.otf",
+                "ZapfinoExtraLT-Ornaments.otf",
+                "ZapfinoExtraLT-SmallCaps.otf",
+                "ZapfinoExtraLT-Three.otf",
+                "ZapfinoExtraLT-Two.otf",
+                "ZapfinoExtraLTPro.otf",
+                "ZapfinoForteLT-Alternate.otf",
+                "ZapfinoForteLT-OneDownload From WarezTeam.WS.otf",
+                "ZapfinoForteLTPro.otf",
+                "612kb___.ttf",
+                "612klb__.ttf",
+                "ACADC___.TTF",
+                "acquestscript.ttf",
+                "Adine Kirnberg.ttf",
+                "Adventure.ttf",
+                "Agatha-Modern.ttf",
+                "AGITPM__.TTF",
+                "Aktau_.ttf",
+                "Alexandra Script.ttf",
+                "Alexandra Zeferino One.ttf",
+                "Alexandra Zeferino Ornamental.ttf",
+                "Alexandra Zeferino Three.ttf",
+                "Alexandra Zeferino Two.ttf",
+                "AnastasiaScript.ttf",
+                "Angelica.ttf",
+                "Annabelle.ttf",
+                "ARBAT.TTF",
+                "Ariston.ttf",
+                "Arkhive.ttf",
+                "ArtScript.Ttf",
+                "Asessor.ttf",
+                "Astra.Ttf",
+                "Aurora script.ttf",
+                "B_CAT_N.TTF",
+                "bandycyr_.ttf",
+                "BAVEU__.TTF",
+                "Beast Impact.ttf",
+                "Beast vs SpreadTall.ttf",
+                "BEDR-CYR.TTF",
+                "Beresta_.ttf",
+                "Bickham Script Alt Four.ttf",
+                "Bickham Script Alt One.ttf",
+                "Bickham Script Alt Three.ttf",
+                "Bickham Script Alt Two.ttf",
+                "Bickham Script One.ttf",
+                "Bickham Script Three.ttf",
+                "Bickham Script Two.ttf",
+                "Bikham Cyr Script.ttf",
+                "Blaze.ttf",
+                "Bolero script.ttf",
+                "Bolid.ttf",
+                "Boyarsky Bold Italic.Ttf",
+                "Brody.ttf",
+                "Bulka.ttf",
+                "Burlak.ttf",
+                "burlak_.ttf",
+                "calligra.ttf",
+                "Calligrapher.ttf",
+                "Calligraphia One.ttf",
+                "Calligraphia Two.ttf",
+                "Calligraph Regular.Ttf",
+                "Carolina.ttf",
+                "Cassandra.ttf",
+                "Ceremonious One.ttf",
+                "Ceremonious Three.ttf",
+                "Ceremonious Two.ttf",
+                "Champignon Script.ttf",
+                "CHEAPH__.TTF",
+                "China2.ttf",
+                "CHOCB___.TTF",
+                "Connetable.ttf",
+                "Copyist.ttf",
+                "Corinthia.ttf",
+                "Corrida Bold.Ttf",
+                "Corrida Cyrillic.Ttf",
+                "CyrillicChancellor.Ttf",
+                "CyrillicRibbon.Ttf",
+                "Decor_cyr.Ttf",
+                "Decor Italic_cyr.Ttf",
+                "decorlz_nm1.ttf",
+                "Decree Art One.ttf",
+                "Decree Art Two.ttf",
+                "decreenarrow.ttf",
+                "decreethin.ttf",
+                "DEMICP__.TTF",
+                "Derby Regular.Ttf",
+                "DESLIGHT.TTF",
+                "Deutsch Gothic.ttf",
+                "DisneyPark.ttf",
+                "DOLLAR.TTF",
+                "DOMCASL.TTF",
+                "DOMN.TTF",
+                "dotf1.ttf",
+                "dr_po.ttf",
+                "DRPODR__                                         Download From WarezTeam.WS.TTF",
+                "DS BroadBrush.ttf",
+                "DS Note.ttf",
+                "DS Rabbit Medium.ttf",
+                "Edisson.ttf",
+                "Edisson(1).ttf",
+                "Ekaterina Velikaya One.ttf",
+                "Ekaterina Velikaya Two.ttf",
+                "Elzevir.ttf",
+                "English Script.TTF",
+                "epson1.ttf",
+                "Esenin script One.ttf",
+                "Esenin script Two.ttf",
+                "Favorit.ttf",
+                "FESTUS__.TTF",
+                "Figured.ttf",
+                "Final.ttf",
+                "FLOWERS.TTF",
+                "FLOYDC.TTF",
+                "Geisha.ttf",
+                "Germgoth.ttf",
+                "Globus.ttf",
+                "Gloria.TTF",
+                "GRUNGE.TTF",
+                "HARDLIFE.TTF",
+                "Heading.ttf",
+                "Heather Script One.ttf",
+                "Heather Script Two.ttf",
+                "Heinrich Script.ttf",
+                "Heinrich Text.ttf",
+                "Hortensia.ttf",
+                "Hrom.ttf",
+                "Imperial.ttf",
+                "INFORMB.TTF",
+                "Isabella-Decor.ttf",
+                "Italiano.ttf",
+                "Jikharev0.Ttf",
+                "JOKE____.TTF",
+                "Kaliakra.Ttf",
+                "Karmen.ttf",
+                "KNYAZCYR.TTF",
+                "KremlinCTT.Ttf",
+                "KRUSH.TTF",
+                "KursivC.Ttf",
+                "lazyc___.ttf",
+                "lcbagira.ttf",
+                "lcblowzy_.ttf",
+                "lcbody2.ttf",
+                "lcchalk_.ttf",
+                "lcconstr.TTF",
+                "lcembroi.ttf",
+                "lcfence.TTF",
+                "Liana.ttf",
+                "LirussTYGRA.ttf",
+                "Logger.ttf",
+                "Ludvig van Bethoveen.ttf",
+                "m_612Koshey Bold.ttf",
+                "m_Acadian.ttf",
+                "m_Agit Prop Medium.ttf",
+                "m_Andes Normal.ttf",
+                "m_Baveuse.ttf",
+                "m_Ben Krush.ttf",
+                "m_Bolid.ttf",
+                "m_Brody.ttf",
+                "m_Macaroni.ttf",
+                "Macarena.ttf",
+                "MACARONI.TTF",
+                "Madera TYGRA.ttf",
+                "Manuscript.ttf",
+                "Margarita script.ttf",
+                "Margit1.ttf",
+                "Marianna.ttf",
+                "Markiz de Sad script.ttf",
+                "MARUSYA_.TTF",
+                "Medieval.ttf",
+                "Menuet script.ttf",
+                "MinusmanC.ttf",
+                "MONOFONTO.TTF",
+                "Moonn___.ttf",
+                "nestor1.ttf",
+                "NEURM___.TTF",
+                "Newlandk.ttf",
+                "Newlandn.ttf",
+                "Ocean__.ttf",
+                "Odessa Script Cyr Regular.Ttf",
+                "OdessaScriptFWF Regular.Ttf",
+                "ograda.ttf",
+                "Ograda Normal.ttf",
+                "orden.ttf",
+                "Ouverture script.ttf",
+                "Park Avenue Normal.Ttf",
+                "Parsek Cyrillic.Ttf",
+                "Patience.ttf",
+                "PECHKIN_.TTF",
+                "Pero.ttf",
+                "pero_.ttf",
+                "PG_IsadoraCyrPro-Regular.ttf",
+                "Pompadur.ttf",
+                "PresentScript Cyrillic.Ttf",
+                "Propisi.TTF",
+                "Redinger.ttf",
+                "REM.ttf",
+                "Roland.ttf",
+                "RomanaScript.ttf",
+                "ROMVC___.TTF",
+                "Rosamunda One.ttf",
+                "Rosamunda Two.ttf",
+                "RoscherkDL.ttf",
+                "Round Script.ttf",
+                "rublik.ttf",
+                "Rurintania.ttf",
+                "Saffron_Cyr.ttf",
+                "Saksonia.ttf",
+                "Scriptorama.ttf",
+                "Script Thin Pen.ttf",
+                "Sevilla Decor.ttf",
+                "SKIDOO.TTF",
+                "STILLA.TTF",
+                "Still Time Cyr.ttf",
+                "STONEHEN.TTF",
+                "Stylo Bold.TTF",
+                "Svoboda.ttf",
+                "TECHD___.TTF",
+                "terminator_cyr_v4.ttf",
+                "Ticker Tape.ttf",
+                "Torhok Italic.Ttf",
+                "Venecia.ttf",
+                "Venski sad One.ttf",
+                "Venski Sad Two.ttf",
+                "Vesna.ttf",
+                "VICTC___.TTF",
+                "vityaz.TTF",
+                "VIVALDID.TTF",
+                "VivaldiD CL.TTF",
+                "Viza.ttf",
+                "VLADOVSKIY.ttf",
+                "Washington.ttf",
+                "whirlcyr2.ttf",
+                "WILLS___.TTF",
+                "Wolfgang Amadeus Mozart.ttf",
+                "Wooden Ship Decorated.ttf",
+                "Xorx_Toothy.ttf",
+                "Xorx_Windy2.ttf",
+                "Young Love ES                                        Download From WarezTeam.WS.ttf",
+                "Zanerian Two.ttf",
+                "Zeferino Three.ttf",
+                "zippc___.ttf"
+            ];
+            const newStyle = document.createElement('style');
+            font.forEach(function (val, index) {
+
+
+                var canv = document.createElement('canvas');
+                canv.width = 800;
+                canv.height = 200;
+
+                canv.style.width = 1600;
+                canv.style.height = 400;
+                document.body.appendChild(canv);
+                document.getElementById('inser').appendChild(canv);
+                newStyle.appendChild(document.createTextNode("\
+@font-face {\
+    font-family: a" + index + ";\
+    src: url('fonts/" + val + "');\
+}\
+"));
+                document.head.appendChild(newStyle);
+
+            });
+
+
+            const all = 1080;
+
+            $(document).ready(function () {
+
+
+                $(document).on('click', 'canvas', function () {
+
+                    this.toBlob(function (blob) {
+                        saveAs(blob, "image.png");
+                    });
+
+                });
+
+                var ys = 100;
+
+                function setupCanvas(canvas) {
+                    var dpr = window.devicePixelRatio || 2;
+                    var rect = canvas.getBoundingClientRect();
+                    canvas.width = rect.width * dpr;
+                    canvas.height = rect.height * dpr;
+                    var ctx = canvas.getContext('2d');
+                    ctx.scale(dpr, dpr);
+                    return ctx;
+                }
+                function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                    var words = text.split(' ');
+                    var line = '';
+                    let sv = y;
+                    for (var n = 0; n < words.length; n++) {
+                        var testLine = line + words[n] + ' ';
+                        var metrics = context.measureText(testLine);
+                        var testWidth = metrics.width;
+                        if (testWidth > maxWidth && n > 0) {
+                            context.textAlign = 'center';
+                            context.fillText(line, x, y);
+                            line = words[n] + ' ';
+                            y += lineHeight;
+                            // if(y>sv)ys -= 35;
+                            sv = y;
+
+
+                        } else {
+                            line = testLine;
+                        }
+                    }
+                    context.textAlign = 'center';
+                    context.fillText(line, x, y);
+
+                }
+
+
+                $(document).on('input', '.texte', function () {
+                    $('canvas').each(function (index) {
+                        this.width = this.getBoundingClientRect().width;
+                        this.height = this.getBoundingClientRect().height;
+                        let ct = setupCanvas(this);
+                        ct.clearRect(0, 0, ct.width, ct.height);
+                        let t2 = $("textarea").val();
+                        ct.font = '75px a' + index;
+                        ct.fillStyle = $('#color').val();
+                        wrapText(ct, t2, 400, ys, 800, 70);
+                    })
+
+
+                })
+            });
+        </script>
+    </body>
+
+</html>
